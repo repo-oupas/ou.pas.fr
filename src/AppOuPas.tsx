@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Share2, Copy, X, Moon, Sun, Info } from 'lucide-react';
 import { FacebookIcon } from './FacebookIcon';
+import AboutModal from './AboutModal';
 
 const AppOuPas = () => {
     const [sentence, setSentence] = useState('');
@@ -213,32 +214,7 @@ const AppOuPas = () => {
             </div>
 
             {/* About Modal */}
-            {showAbout && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-                    {/* Backdrop */}
-                    <div
-                        className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
-                        onClick={() => setShowAbout(false)}
-                    ></div>
-
-                    {/* Modal Content */}
-                    <div className={`relative z-10 max-w-md p-6 rounded-lg shadow-xl ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} transition-all duration-300`}>
-                        <h2 className="text-2xl font-bold mb-2">À propos</h2>
-                        <p className="mb-4">
-                            Ce site Web affiche une phrase à partir d'un paramètre URL suivi de "ou pas".
-                        </p>
-                        <p className="mb-4">
-                            Project Repo : https...
-                        </p>
-                        <button
-                            onClick={() => setShowAbout(false)}
-                            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-                        >
-                            Close
-                        </button>
-                    </div>
-                </div>
-            )}
+            <AboutModal isOpen={showAbout} onClose={() => setShowAbout(false)} />
 
             {/* Main content */}
             <div className="flex flex-col items-center justify-center min-h-screen p-8">
