@@ -1,25 +1,21 @@
-# Getting Started with Create React App
+# Ou pas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce site Web affiche une phrase à partir d'un paramètre URL suivi de "ou pas" avec des animations lisses.
 
-
-## Project Generated via
-```
-npx create-react-app ou.pas.fr --template typescript
-```
+## Project Aim
+  
 
 ## Analytics
-I had two options :
-  1. no visit tracking at all (best option)
-  2. track at the condition I own the data, and ideally host the service at home, finally show visitor what is collected in a presentable fashion way.
+J'avais 2 options :
+  1. Pas de tracking
+  2. Tracking en vous laissant la visibilité sur ce qui est collecté
 
-### I do analytics but...
-  Well I really want to see if this little page has success...
-  For analytics I am using [matomo](https://matomo.org/),  
-  No Google Analytics or whatsoever. Which seems to not resell the data gather in a localy hosted instance of MySQL.
-  Hosted at : Hostinger 
-  Since now a days it's all about tracking,  I want you to see what is collected... working on that
-
-### My question for you
-   - would you rather have me hosting the service (webserver and SQL DB ) "at home" or keep using it  ?
+### Option 2
+  J'ai vraiment envie de voir si ce petit site a des visiteurs
+  J'utilise [matomo](https://matomo.org/),  
+  Pas de Google Analytics.
+  Hébergé chez Hostinger 
+  
+### Ma question
+   - Je ne sais pas ce que vous, visiteur préférez que j'héberge plutôt qu'hostinger.
 

@@ -27,7 +27,7 @@ const AppOuPas = () => {
         "C'est génial",
         "J'adore cette idée",
         "Tu es doué",
-        "Tu as de belle dents"
+        "Tu as de belles dents"
     ];
 
     const backgroundVariants = [
@@ -49,7 +49,7 @@ const AppOuPas = () => {
     // Parse URL parameters and set sentence
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        const sentenceParam = urlParams.get('sentence');
+        const sentenceParam = urlParams.get('phrase') || urlParams.get('sentence');
 
         if (sentenceParam) {
             // Decode URI component and replace + with spaces
@@ -147,7 +147,7 @@ const AppOuPas = () => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (showInput && e.key === 'Enter' && inputValue.trim()) {
                 const encodedSentence = encodeURIComponent(inputValue.trim());
-                window.location.href = `?sentence=${encodedSentence}`;
+                window.location.href = `?phrase=${encodedSentence}`;
             }
         };
 
@@ -160,10 +160,10 @@ const AppOuPas = () => {
     const beginOfUrl = window.location.origin + window.location.pathname;
     //console.log('sentence='+`${sentence}`)
     const handleShare = (platform: string) => {
-        console.log('sentence=' + `${sentence}`)
-        const notEncodedFullUrl = beginOfUrl + '?sentence=' + sentence
+        console.log('phrase=' + `${sentence}`)
+        const notEncodedFullUrl = beginOfUrl + '?phrase=' + sentence
         const encodedSentence = encodeURIComponent(sentence || '');
-        const encodedSentenceParam = `sentence=${encodedSentence}`;
+        const encodedSentenceParam = `phrase=${encodedSentence}`;
         const fullEncodedUrl = `${beginOfUrl}?${encodedSentenceParam}`;
 
         //console.log('urlToShare=' + `${urlToShare}`)
@@ -301,11 +301,11 @@ const AppOuPas = () => {
                                     <button
                                         onClick={() => {
                                             const encodedSentence = encodeURIComponent(inputValue);
-                                            window.location.href = `?sentence=${encodedSentence}`;
+                                            window.location.href = `?phrase=${encodedSentence}`;
                                         }}
                                         className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                                     >
-                                        Send
+                                        Go
                                     </button>
                                 </div>
                             )}
