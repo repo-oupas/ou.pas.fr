@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { Share2, Copy, X, Moon, Sun, Info } from 'lucide-react';
+import { Share2, Copy, X, Moon, Sun, Info, ChartArea } from 'lucide-react';
 import { FacebookIcon } from './FacebookIcon';
 import AboutModal from './AboutModal';
+import { Stats } from 'fs';
 
 const AppOuPas = () => {
     const [sentence, setSentence] = useState('');
@@ -18,7 +19,13 @@ const AppOuPas = () => {
     const [showAbout, setShowAbout] = useState(false);
     const [showInput, setShowInput] = useState(false);
     const [inputValue, setInputValue] = useState('');
-    
+
+    // Function to toggle the Matomo dashboard visibility
+    const openMatomoDashboard = () => {
+        //setShowMatomoDashboard(!showMatomoDashboard);
+        window.open('https://stats-ou.pas.fr/index.php?module=Widgetize&action=iframe&moduleToWidgetize=Dashboard&actionToWidgetize=index&idSite=1&period=year&date=yesterday')
+    };
+
     const defaultSentences = [
         "Site Bientôt terminé",
         "Tu es incroyable",
@@ -196,6 +203,13 @@ const AppOuPas = () => {
         <div className={`min-h-screen ${currentBgVariant} ${darkMode ? 'dark' : ''} transition-all duration-500`}>
             {/* Header with theme toggle */}
             <div className="absolute top-4 right-4 z-10 flex gap-2">
+                {/* Matomo Dashboard */}
+                <button
+                    className={`p-2 rounded-full ${darkMode ? 'bg-gray-800 text-yellow-400' : 'bg-white text-gray-600'} shadow-lg hover:shadow-xl transition-all duration-300`}
+                  onClick={openMatomoDashboard}
+                >
+                  <ChartArea size={20}/> 
+                </button>
                 {/* About Button */}
                 <button
                     onClick={() => setShowAbout(true)}
@@ -212,6 +226,8 @@ const AppOuPas = () => {
                     {darkMode ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
             </div>
+
+
 
             {/* About Modal */}
             <AboutModal isOpen={showAbout} onClose={() => setShowAbout(false)} />

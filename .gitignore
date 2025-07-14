@@ -22,3 +22,5 @@ project_export.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+*.tsx.txt
