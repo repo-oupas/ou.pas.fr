@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { Share2, Copy, X, Moon, Sun, Info, ChartArea } from 'lucide-react';
 import { FacebookIcon } from './FacebookIcon';
-import AboutModal from './AboutModal';
+import AboutModal from './components/AboutModal';
 import { Stats } from 'fs';
+import Layout from './components/Layout';
 
 const AppOuPas = () => {
     const [sentence, setSentence] = useState('');
@@ -200,33 +201,17 @@ const AppOuPas = () => {
     const currentBgVariant = darkMode ? darkBackgroundVariants[backgroundVariant] : backgroundVariants[backgroundVariant];
 
     return (
+        <>
+            <Layout
+                darkMode={darkMode}
+                currentBgVariant={currentBgVariant}
+                setDarkMode={setDarkMode}
+                setShowAbout={setShowAbout}
+                openMatomoDashboard={openMatomoDashboard}
+            >
         <div className={`min-h-screen ${currentBgVariant} ${darkMode ? 'dark' : ''} transition-all duration-500`}>
-            {/* Header with theme toggle */}
-            <div className="absolute top-4 right-4 z-10 flex gap-2">
-                {/* Matomo Dashboard */}
-                <button
-                    className={`p-2 rounded-full ${darkMode ? 'bg-gray-800 text-yellow-400' : 'bg-white text-gray-600'} shadow-lg hover:shadow-xl transition-all duration-300`}
-                  onClick={openMatomoDashboard}
-                >
-                  <ChartArea size={20}/> 
-                </button>
-                {/* About Button */}
-                <button
-                    onClick={() => setShowAbout(true)}
-                    className={`p-2 rounded-full ${darkMode ? 'bg-gray-800 text-yellow-400' : 'bg-white text-gray-600'} shadow-lg hover:shadow-xl transition-all duration-300`}
-                    aria-label="About"
-                >
-                    <Info size={20} />
-                </button>
 
-                <button
-                    onClick={() => setDarkMode(!darkMode)}
-                    className={`p-2 rounded-full ${darkMode ? 'bg-gray-800 text-yellow-400' : 'bg-white text-gray-600'} shadow-lg hover:shadow-xl transition-all duration-300`}
-                >
-                    {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
-            </div>
-
+           
 
 
             {/* About Modal */}
@@ -356,6 +341,8 @@ const AppOuPas = () => {
             {/* Google Fonts */}
             <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
         </div>
+        </Layout>
+        </>
     );
 };
 
